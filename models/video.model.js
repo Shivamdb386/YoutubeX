@@ -16,13 +16,13 @@ const videoSchema = new Schema(
         type: String,
         required: true
       },
-      decription:{
+      description:{
         type: String,
         required: true
       },
       duration:{
         type: Number,
-        required: true
+        required: false
       },
       views:{
         type: Number,

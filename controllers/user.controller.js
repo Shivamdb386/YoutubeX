@@ -3,6 +3,7 @@ import { asyncHandler } from "../utils/asyncHandler.js"
 import {user} from "../models/user.model.js"
 import { APIResponse } from "../utils/apiresponse.js"
 import jwt  from "jsonwebtoken"
+import { uploadOnCloudinary } from "../utils/cloudinary.js"
 
 
 const  registerUser = asyncHandler(async(req,res) =>{
@@ -26,14 +27,29 @@ const  registerUser = asyncHandler(async(req,res) =>{
         throw new Error("user already existed ");
         
     }
+    const avatarLocalPath = req.files?.avatar[0]?.path ;
+    const coverimageLocalPath = req.files?.coverimage[0]?.path;
+ 
+    if(!avatarLocalPath){
+        throw new error("No avatarpath provided")
+    }
+   const avatar= await uploadOnCloudinary(avatarLocalPath)
+   const coverImage = await uploadOnCloudinary(coverimageLocalPath)
+
+   if(!avatar){
+    throw new error("No avatar found")
+    }
+
     const User = await user.create({
         fullname,
         username,
         email,
+        avatar : avatar.url,
+        coverimage : coverImage?.url || "",
         password
     })
     //check if user is created or not mongodb stores _id of the entry check this by created object User
-    const createduser = user.findById(User._id).select(
+    const createduser = await user.findById(User._id).select(
         "-password -refreshtoken"
     )
     if (!createduser) {
