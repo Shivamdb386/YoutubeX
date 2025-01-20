@@ -29,6 +29,9 @@ app.use("/subscribe",subscriptionrouter)
 import videorouter from './routers/video.routes.js';
 app.use("/video",videorouter)
 
+import dashboardRouter from './routers/dashboard.routes.js'
+app.use("/dashboard", dashboardRouter)
+
 
 
 

@@ -10,7 +10,27 @@ import { APIResponse } from "../utils/apiresponse.js"
 const getAllVideos = asyncHandler(async (req, res) => {
     const { page = 1, limit = 10, query, sortBy, sortType, userId } = req.query
     //TODO: get all videos based on query, sort, pagination
-    
+    let videoQuery = Video.find()
+    if (query) {
+        videoQuery = videoQuery.find({ $text: { $search: query } })
+    }
+
+    // Filter by user ID
+    if (userId) {
+        videoQuery = videoQuery.find({ userId: userId })
+    }
+
+    // Sort videos
+    if (sortBy && sortType) {
+        videoQuery = videoQuery.sort({ [sortBy]: sortType === 'asc' ? 1 : -1 })
+    }
+    if(!videoQuery){
+        throw new Error("No Video Found ");
+        
+    }
+    return res.status(200).
+    json(new APIResponse(200,videoQuery,"Searched Video"))
+
 })
 
 const publishAVideo = asyncHandler(async (req, res) => {
@@ -133,7 +153,18 @@ const deleteVideo = asyncHandler(async (req, res) => {
 
 const togglePublishStatus = asyncHandler(async (req, res) => {
     const { videoId } = req.params
+    if(!videoId || !isValidObjectId(videoId)){
+        throw new Error(400,"provide proper video id")
+    }
+    let video = await Video.findById(videoId)
+    if(!video){
+     throw new Error("No video Found");
+     }
     
+    let updatedVideo = await Video.findByIdAndUpdate(videoId,{$set : {isPublished : !(video.isPublished)}})
+    
+    return res.status(200).
+    json(new APIResponse(200,updatedVideo," Video Updated Successfully"))
 })
 
 export {
