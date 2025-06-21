@@ -4,11 +4,10 @@ import axios from "axios";
 import useSubscribe from "../Context/subscribeContext";
 export default function Dashboard() {
      const { user } = useUser();
-     console.log("Dashboard Data ",user.data.User.fullname)
      const [videos,setVideos]= useState([])
      const [tweets,setTweets] = useState([])
      const {subscribe,setSubscribe} = useSubscribe()
-     const [subscriptionStatus, setSubscriptionStatus] = useState({});
+     
 
   const userSubscribed = async()=>{
     

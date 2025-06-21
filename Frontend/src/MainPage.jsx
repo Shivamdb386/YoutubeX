@@ -31,7 +31,6 @@ const handleSignOut= ()=>{
 
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
   { name: 'Sign out', href: '#', onClick: handleSignOut},
 ]
 
