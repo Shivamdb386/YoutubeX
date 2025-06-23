@@ -2,7 +2,7 @@
     "rewrites": [{ "source": "/(.*)", "destination": "/index.html" },
 {
       "source": "/api/(.*)",
-      "destination": "${VITE_API_BASE_URL}/$1"
+      "destination": "https://youtube-x-ecru.vercel.app/$1"
     }]
      
   }
