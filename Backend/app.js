@@ -51,4 +51,4 @@ app.use("/dashboard", dashboardRouter)
 
 
 
-export {app}
+export default app
