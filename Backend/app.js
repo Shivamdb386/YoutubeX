@@ -12,14 +12,9 @@ import cookieParser from 'cookie-parser';
 const allowedOrigins = ['https://youtube-x-wf6x.vercel.app'];
 
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true // If you're sending cookies or auth headers
+  origin: 'https://youtube-x-wf6x.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  credentials: true
 }));
 
 app.use(express.json({limit : '50mb'}));
