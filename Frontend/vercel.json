@@ -9,6 +9,13 @@
                 { "key": "Access-Control-Allow-Origin", "value": "*" }
             ]
         }
+    ],
+    "redirects": [
+        {
+            "source": "/api/:path*",
+            "destination": "https://youtube-x-ecru.vercel.app/:path*",
+            "permanent": false
+        }
     ]
     
 }
