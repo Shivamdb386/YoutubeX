@@ -4,9 +4,22 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 
+// app.use(cors({
+//     origin: process.env.CORS_ORIGIN,
+//     credentials: true
+// }));
+
+const allowedOrigins = ['https://youtube-x-wf6x.vercel.app'];
+
 app.use(cors({
-    origin: '*',
-    credentials: true
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true // If you're sending cookies or auth headers
 }));
 
 app.use(express.json({limit : '50mb'}));
