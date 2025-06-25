@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 
 app.use(cors({
-  origin: 'https://youtube-x-wf6x.vercel.app', // Replace with your frontend URL
+   origin: 'https://youtube-x-wf6x.vercel.app', // Replace with your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
   credentials: true,
@@ -18,6 +18,20 @@ app.use(express.urlencoded({extended:true, limit:'50mb'}));
 app.use(express.static("public"));
 app.use(cookieParser());
 // app.use(bodyParser.urlencoded({ limit:'50mb',extended: true }));
+
+app.use((req, res, next) => {
+  res.header(
+    'Access-Control-Allow-Origin',
+    'https://youtube-x-wf6x.vercel.app' // Your frontend URL
+  );
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  next();
+});
+
 
 
 
