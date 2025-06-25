@@ -14,7 +14,7 @@
   "routes": [
     { "src": "/api/(.*)", "dest": "/$1","methods": ["GET", "POST", "PUT", "DELETE", "PATCH"]},
      {
-      "src": "/(.*)",
+      "src": "/api/(.*)",
       "headers": {
         "Access-Control-Allow-Origin": "https://youtube-x-wf6x.vercel.app",
         "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,PATCH,OPTIONS",

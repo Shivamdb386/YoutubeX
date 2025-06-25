@@ -5,10 +5,12 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 
 app.use(cors({
-  origin: 'https://youtube-x-wf6x.vercel.app',
+  origin: 'https://youtube-x-wf6x.vercel.app', // Replace with your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  credentials: true,
+  preflightContinue: false,
+  optionsSuccessStatus: 204
 }));
 
 app.use(express.json({limit : '50mb'}));
