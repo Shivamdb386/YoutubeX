@@ -1,8 +1,22 @@
 {
-    "rewrites": [{ "source": "/(.*)", "destination": "/index.html" },
-{
-      "source": "/api/(.*)",
-      "destination": "https://youtube-x-ecru.vercel.app/$1"
-    }]
-     
-  }
+    "rewrites": [
+        { "source": "/(.*)", "destination": "/index.html" }
+    ],
+    "headers": [
+        {
+            "source": "/api/(.*)",
+            "headers": [
+                { "key": "Access-Control-Allow-Origin", "value": "https://youtube-x-wf6x.vercel.app" },
+                { "key": "Access-Control-Allow-Methods", "value": "GET,POST,PUT,DELETE,PATCH" },
+                { "key": "Access-Control-Allow-Headers", "value": "X-Requested-With, Content-Type" }
+            ]
+        }
+    ],
+    "redirects": [
+        {
+            "source": "/api/:path*",
+            "destination": "https://youtube-x-ecru.vercel.app/:path*",
+            "permanent": false
+        }
+    ]
+}
