@@ -5,8 +5,7 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 
 app.use(cors({
-    origin: 'https://youtube-x-wf6x.vercel.app',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    origin: process.env.CORS_ORIGIN,
     credentials: true
 }));
 
