@@ -6,6 +6,8 @@ export const verifyJWT = asyncHandler(async(req,res,next)=>{
     // to get the user we got the cookie from req and from cookie we got token  
     const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "")
     if(!token){
+        console.log(" req.cookies?.accessToken ", req.cookies?.accessToken);
+        console.log(" second ",req.header("Authorization")?.replace("Bearer ", ""));
         throw new Error("Unauth request");
         
     }
