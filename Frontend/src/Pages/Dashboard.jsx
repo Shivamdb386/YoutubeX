@@ -12,7 +12,7 @@ export default function Dashboard() {
   const userSubscribed = async()=>{
     
       try {
-        const subscriberId = user.data.User._id
+        const subscriberId = user?.data?.User?._id
         const response = await axios.get(`/api/subscribe/c/${subscriberId}`)
         console.log(response.data)
         setSubscribe(response.data)
@@ -24,7 +24,7 @@ export default function Dashboard() {
    useEffect(()=>{
     if(user?.data?.User?._id){
     userSubscribed()}
-   },[user])
+   },[user?.data?.User?._id])
 
     
     const isuserSubscribed = (ownerId)=>{
