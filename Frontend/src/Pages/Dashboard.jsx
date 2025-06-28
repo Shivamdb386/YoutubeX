@@ -22,8 +22,9 @@ export default function Dashboard() {
       } 
     }
    useEffect(()=>{
-    userSubscribed()
-   },[])
+    if(user?.data?.User?._id){
+    userSubscribed()}
+   },[user])
 
     
     const isuserSubscribed = (ownerId)=>{
