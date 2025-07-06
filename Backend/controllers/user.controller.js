@@ -144,7 +144,7 @@ const loginuser = asyncHandler(async (req,res)=>{
    const options = {
     httpOnly :true,
     secure : true,
-    sameSite: "none",
+    sameSite: 'Lax',
    }
    return res.status(200).
    cookie("accessToken",accessToken,options).
