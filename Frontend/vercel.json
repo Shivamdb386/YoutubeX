@@ -1,10 +1,7 @@
 {
     "rewrites": [
-      {
-         "source": "/api/:path*",
-         "destination": "https://youtube-x-ecru.vercel.app/api/:path*"
-      }
- ],
+        { "source": "/api/:path*", "destination": "/index.html" }
+    ],
     "headers": [
         {
            "source": "/(.*)",
