@@ -145,6 +145,7 @@ const loginuser = asyncHandler(async (req,res)=>{
     httpOnly :true,
     secure : true,
     sameSite: 'None',
+    domain: 'vercel.app'
    }
    return res.status(200).
    cookie("accessToken",accessToken,options).
