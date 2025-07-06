@@ -21,16 +21,6 @@
         {
             "source": "/api/:path*",
             "destination": "https://youtube-x-ecru.vercel.app/:path*",
-            "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "https://youtube-x-ecru.vercel.app/:path*"
-        },
-        {
-          "key": "Access-Control-Allow-Credentials",
-          "value": "true"
-        }
-      ],
             "permanent": false
         }
     ]
