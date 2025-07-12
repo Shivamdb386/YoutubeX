@@ -75,7 +75,9 @@ export default function Dashboard() {
     const getAllVideos=async()=>{
       try {
         
-        const response = await axios.get('/api/video/',{
+        const response = await axios.get('/api/video/',
+          {},
+          {
           params:{
            random : true,
            limit : 10
