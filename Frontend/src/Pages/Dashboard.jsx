@@ -84,6 +84,7 @@ export default function Dashboard() {
         console.log(response.data)
         setVideos(response.data.data)
       } catch (error) {
+        console.log("Frontend error")
         console.log(error)
       }
     }
@@ -105,12 +106,14 @@ export default function Dashboard() {
 
     }
     useEffect(()=>{
-      getAllTweets()
-    },[])
+      if(user?.data?.User?._id){
+      getAllTweets()}
+    },[user?.data?.User?._id])
 
     useEffect(()=>{
-      getAllVideos()
-    },[])
+      if(user?.data?.User?._id){
+      getAllVideos()}
+    },[user?.data?.User?._id])
     return(
     <>
      <header className="bg-white shadow">
