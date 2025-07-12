@@ -19,14 +19,6 @@
         }
       ]
         }
-    ],
-    
-    "redirects": [
-        {
-            "source": "/api/:path*",
-            "destination": "https://youtube-x-ecru.vercel.app/:path*",
-            "permanent": false
-        }
     ]
     
 }
