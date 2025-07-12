@@ -11,12 +11,12 @@ export default function Login(){
     const {user,setUser} = useUser();
     const [error,setError] = useState(null);
     const{login}=useAuth();
+    const [isLoading, setIsLoading] = useState(false);
 
 
 const Signin=async(e)=>{
     e.preventDefault()
-    console.log("Done sign in");
-   
+    setIsLoading(true)
     try{
     const response =  await axios.post('/api/users/login',{
         email: Email,
@@ -24,9 +24,6 @@ const Signin=async(e)=>{
     },
     {
        withCredentials: true
-    },
-    {
-       credentials: 'include' 
     }
 )
     
@@ -38,7 +35,7 @@ const Signin=async(e)=>{
           accessToken: response.data.data.accessToken,
           refreshToken: response.data.data.refreshToken,
         });}
- 
+    setIsLoading(false)
     navigate('/'); // Redirect to home route
 
     }catch(error){
@@ -50,6 +47,14 @@ const Signin=async(e)=>{
 }
 return(
 <section className="bg-gray-50 dark:bg-gray-900">
+  {isLoading && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <svg className="animate-spin h-10 w-10 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </div>
+      )}
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo"/>
