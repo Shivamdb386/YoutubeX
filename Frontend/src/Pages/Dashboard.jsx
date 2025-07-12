@@ -75,8 +75,7 @@ export default function Dashboard() {
     const getAllVideos=async()=>{
       try {
         
-        const response = await axios.get('/api/video/',
-          {},
+        const response = await axios.get('/api/video',
           {
           params:{
            random : true,
@@ -93,7 +92,7 @@ export default function Dashboard() {
 
     const getAllTweets =async()=>{
       try {
-        const response = await axios.get('/api/tweet/',{
+        const response = await axios.get('/api/tweet',{
         params:{
           random :true,
           limit:10
