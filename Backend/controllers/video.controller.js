@@ -12,15 +12,11 @@ const getAllVideos = asyncHandler(async (req, res) => {
     //TODO: get all videos based on query, sort, pagination
     
     if (random === 'true') {
-        console.log("came here")
-        try{
         const randomVideos = await Video.aggregate([
             { $sample: { size: parseInt(limit) } }
         ])
         await Video.populate(randomVideos, { path: 'owner', select: 'fullname avatar' });
-        }catch(error){
-            console.log(error)
-        }
+
         if (!randomVideos || randomVideos.length === 0) {
             throw new Error("No Videos Found")
         }
