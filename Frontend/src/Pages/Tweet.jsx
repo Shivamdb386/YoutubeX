@@ -10,8 +10,10 @@ const[isEmptyContent,setisEmptyContent] = useState(false)
 const[IsCreateTweet,setIsCreateTweet]= useState(false);
 const {user} =useUser();
 const {tweet}= useTweet();
+const [isLoading, setIsLoading] = useState(false);
 
 const getTweets = async()=>{
+  setIsLoading(true)
   try {
     console.log(" userID ", user.data.User._id)
     const response = await axios.get(`/api/tweet/user`)
@@ -22,6 +24,7 @@ const getTweets = async()=>{
         return
     }
     setTweets(response.data.data)
+    setIsLoading(false)
     setisEmptyContent(false)
   } catch (error) {
     console.log(error);
@@ -68,6 +71,14 @@ const onDelete =async(tweetid)=>{
             
         ) :
         <div>
+        {isLoading && (
+        <div className="fixed top-0 left-0 w-full h-full bg-opacity-50 flex justify-center items-center z-50">
+          <svg className="animate-spin h-10 w-10 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </div>
+      )}
         {tweets.map(tweet =>(
         <div key= {tweet._id} class="max-w-xl mx-auto ml-30 mt-4 bg-white border border-gray-200 rounded-lg shadow-md p-4 font-sans">
         <div class="flex items-center mb-3">
