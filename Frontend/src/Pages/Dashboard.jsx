@@ -127,7 +127,9 @@ export default function Dashboard() {
     <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">Welcome to Youtube-X combining best features of Youtube and X</div>
   </main>
   <div className="relative overflow-x-hidden py-4 px-2">
-  {isLoading && (
+  
+  <div className="animate-scroll flex space-x-4 hover:animation-play-state-paused">
+    {isLoading && (
       <div className="fixed top-0 left-0 w-full h-full bg-opacity-50 flex justify-center items-center z-50">
         <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -135,7 +137,6 @@ export default function Dashboard() {
         </svg>
           </div>
         )}
-  <div className="animate-scroll flex space-x-4 hover:animation-play-state-paused">
     {[...videos, ...videos,...videos].map((video,index) => (
       <div 
         key={`${index}-${video._id}`} 
