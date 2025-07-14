@@ -23,7 +23,7 @@ const AddVideos = ({ isOpen, onClose }) => {
       formdata.append('thumbnail',thumbnail);
       
       try {
-        const response = await axios.post('/api/video/',formdata,{
+        const response = await axios.post('/api/video',formdata,{
             headers: {
                 'Content-Type': 'multipart/form-data'
             }

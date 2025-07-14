@@ -39,6 +39,7 @@ const Signin=async(e)=>{
     navigate('/'); // Redirect to home route
 
     }catch(error){
+        setIsLoading(false)
         if(error.response)
         setError(error.response.data.data);
         console.log(error);   
