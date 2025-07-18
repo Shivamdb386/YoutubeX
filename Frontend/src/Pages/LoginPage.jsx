@@ -47,7 +47,7 @@ const Signin=async(e)=>{
     }
 }
 return(
-<section className="bg-gray-50 dark:bg-gray-900">
+<section className="bg-gray-900 dark:bg-gray-900">
   {isLoading && (
         <div className="fixed top-0 left-0 w-full h-full bg-opacity-50 flex justify-center items-center z-50">
           <svg className="animate-spin h-10 w-10 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -57,22 +57,22 @@ return(
         </div>
       )}
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-      <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+      <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-white dark:text-white">
           <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo"/>
           Youtube-X    
       </a>
-      <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+      <div className="w-full rounded-lg shadow border md:mt-0 sm:max-w-md xl:p-0 bg-gray-800 border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl dark:text-white">
                   Sign in to your account
               </h1>
               <form className="space-y-4 md:space-y-6" onSubmit= {Signin}>
                   <div>
-                      <label htmlFor ="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+                      <label htmlFor ="email" className="block mb-2 text-sm font-medium text-white dark:text-white">Your email</label>
                       <input type="email" value = {Email} onChange={ (e)=>{setEmail(e.target.value)}} name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required=""/>
                   </div>
                   <div>
-                      <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                      <label htmlFor="password" className="block mb-2 text-sm font-medium text-white dark:text-white">Password</label>
                       <input type="password"  value = {Password} onChange={ (e)=>{setPassword(e.target.value)}} name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required=""/>
                   </div>
                   {error &&( 
